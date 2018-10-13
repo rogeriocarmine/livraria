@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Livro {
@@ -63,6 +64,12 @@ public class Livro {
 
     public LocalDate getDataEstimada() {
         return dataEstimada;
+    }
+
+    public String getDataEstimadaString() {
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataTexto=this.dataEstimada.format(formatador);
+        return dataTexto;
     }
 
     public void setDataEstimada(LocalDate dataEstimada) {

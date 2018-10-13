@@ -12,10 +12,38 @@
 
 <html>
 <head>
-    <title>Listagem de Livro</title>
+    <title>Página Home da Casa do Código - Simulação</title>
 </head>
 <body>
-<h1>Listagem de Livro</h1>
+<h1>Página Home da Casa do Código - Simulação</h1>
+
+<h2>Lançamento de Livros</h2>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>titulo</th>
+        <th>preço</th>
+        <th>dataEstimada</th>
+        <th>sumario</th>
+        <th>autor</th>
+    </thead>
+    <tbody>
+    <c:forEach var="recente" items="${livrosRecentes}">
+        <tr>
+            <td>${recente.id}</td>
+            <td>${recente.titulo}</td>
+            <td>${recente.preco}</td>
+            <td>${recente.getDataEstimadaString()}</td>
+            <td>${recente.sumario}</td>
+            <td>${recente.autor.nome}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+    </table>
+
+<h2>Todos os Livros</h2>
 
 <table border="1" cellpadding="4" cellspacing="0">
     <thead>
@@ -39,8 +67,9 @@
         </tr>
     </c:forEach>
     </tbody>
+</table>
 
-    </table>
+
     <BR>
     <a href="/livro/cadastrar">Cadastrar Livro</a>
 

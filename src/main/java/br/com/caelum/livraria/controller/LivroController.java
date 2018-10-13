@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -47,7 +49,20 @@ public class LivroController {
             return form(livroForm);
         }
 
-        livroDao.save(livroForm.toLivro(autorDao));
+        Livro livro = livroForm.toLivro(autorDao);
+
+        livroDao.save(livro);
+
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        //Imprimindo o e-mail
+        System.out.println("------------------------------------------------------------"+
+                            "Enviando email sobre o Livro\n"+
+                            "Titulo:"+livro.getTitulo()+"\n"+
+                            "Autor:"+livro.getAutor().getNome()+"\n"+
+                            "Data Estimada:"+formatador.format(livro.getDataEstimada())
+                           +"-----------------------------------------------------------" );
+
 
         return mav;
     }
@@ -60,6 +75,23 @@ public class LivroController {
         List<Livro> lista = livroDao.findAll();
 
         mav.addObject("livros", lista);
+
+        return mav;
+    }
+
+    @GetMapping("/home")
+    public ModelAndView listarRecentes() {
+
+        ModelAndView mav = new ModelAndView("home");
+
+        //Todos os Livros
+        List<Livro> livros = livroDao.findAll();
+
+        //Considerando 30 dias como data de corte para lançamentos
+        List<Livro> livrosRecentes = livroDao.findRecentes(LocalDate.now().minusDays(60));
+
+        mav.addObject("livros", livros);
+        mav.addObject("livrosRecentes", livrosRecentes);
 
         return mav;
     }
