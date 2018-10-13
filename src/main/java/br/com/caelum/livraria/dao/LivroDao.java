@@ -31,6 +31,9 @@ public class LivroDao {
         return query.getResultList();
     }
 
+    public Livro findOne(Integer id) {
+        return manager.find(Livro.class, id);
+    }
 }
 
 

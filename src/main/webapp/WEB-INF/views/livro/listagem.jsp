@@ -15,6 +15,8 @@
     <title>Listagem de Livro</title>
 </head>
 <body>
+<a href="/home">Página Inicial</a>
+<br>
 <h1>Listagem de Livro</h1>
 
 <table border="1" cellpadding="4" cellspacing="0">

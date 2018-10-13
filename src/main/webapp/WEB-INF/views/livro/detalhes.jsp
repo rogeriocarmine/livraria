@@ -12,32 +12,18 @@
 
 <html>
 <head>
-    <title>Listagem de Autor</title>
+    <title>Detalhe de Livro: ${livro.titulo}</title>
 </head>
 <body>
 <a href="/home">Página Inicial</a>
-<br><br>
+<br>
+<h1>Detalhe de Livro: ${livro.titulo}</h1>
+<h2>Autor:${livro.autor.nome}</h2>
 
-<h1>Listagem de Autor</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Email</th>
-    </thead>
-    <tbody>
-    <c:forEach var="autor" items="${autores}">
-        <tr>
-            <td>${autor.id}</td>
-            <td>${autor.nome}</td>
-            <td>${autor.email}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-
-    <a href="/autor/cadastro">Cadastrar Autor</a>
+<br>Sumário: ${livro.sumario}
+<br>Preço: ${livro.preco}
+<br>Data Estimada: ${livro.getDataEstimadaString()}
+<br>
 
 </body>
 </html>

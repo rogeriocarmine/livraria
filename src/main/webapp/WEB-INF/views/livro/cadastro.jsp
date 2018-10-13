@@ -14,6 +14,10 @@
     <title>Cadastro de Livro</title>
 </head>
 <body>
+
+<a href="/home">Página Inicial</a>
+<br>
+
 <h1>Cadastro de Alterado</h1>
 
 <c:set var="bindingResult" value="${requestScope['org.springframework.validation.BindingResult.livroForm']}"/>

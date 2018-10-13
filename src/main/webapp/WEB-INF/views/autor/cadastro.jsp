@@ -13,6 +13,9 @@
 <body>
 <h1>Cadastro de Autor</h1>
 
+<a href="/home">Página Inicial</a>
+<br><br>
+
 <form action="/autor/salvar" method="post">
 
     <label for="nome">Nome:</label>

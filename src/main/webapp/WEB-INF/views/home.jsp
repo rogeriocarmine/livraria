@@ -22,7 +22,6 @@
 <table border="1" cellpadding="4" cellspacing="0">
     <thead>
     <tr>
-        <th>id</th>
         <th>titulo</th>
         <th>preço</th>
         <th>dataEstimada</th>
@@ -32,8 +31,7 @@
     <tbody>
     <c:forEach var="recente" items="${livrosRecentes}">
         <tr>
-            <td>${recente.id}</td>
-            <td>${recente.titulo}</td>
+            <td><a href="/livro/${recente.id}/detalhe">${recente.titulo}</a></td>
             <td>${recente.preco}</td>
             <td>${recente.getDataEstimadaString()}</td>
             <td>${recente.sumario}</td>
@@ -48,7 +46,6 @@
 <table border="1" cellpadding="4" cellspacing="0">
     <thead>
     <tr>
-        <th>id</th>
         <th>titulo</th>
         <th>preço</th>
         <th>dataEstimada</th>
@@ -58,8 +55,7 @@
     <tbody>
     <c:forEach var="livro" items="${livros}">
         <tr>
-            <td>${livro.id}</td>
-            <td>${livro.titulo}</td>
+            <td><a href="/livro/${livro.id}/detalhe">${livro.titulo}</a></td>
             <td>${livro.preco}</td>
             <td>${livro.getDataEstimadaString()}</td>
             <td>${livro.sumario}</td>
