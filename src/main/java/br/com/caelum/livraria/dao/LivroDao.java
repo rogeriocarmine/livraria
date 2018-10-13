@@ -1,6 +1,7 @@
 package br.com.caelum.livraria.dao;
 
 import model.Autor;
+import model.Livro;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,23 +10,20 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class AutorDao {
+public class LivroDao {
 
     @PersistenceContext
     private EntityManager manager;
 
-    public void save(Autor autor) {
-        manager.persist(autor);
+    public void save(Livro livro) {
+        manager.persist(livro);
     }
 
-    public List<Autor> findAll() {
-        TypedQuery<Autor> query = manager.createQuery("select a from Autor a", Autor.class);
+    public List<Livro> findAll() {
+        TypedQuery<Livro> query = manager.createQuery("select l from Livro l", Livro.class);
         return query.getResultList();
     }
 
-    public Autor findOne(Integer autorId) {
-        return manager.find(Autor.class, autorId);
-    }
-
 }
+
 
